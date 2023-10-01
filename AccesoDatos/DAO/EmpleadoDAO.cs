@@ -67,7 +67,6 @@ namespace AccesoDatos.DAO
 
                 db.OpenConnection();
                 db.ExecuteNonQuery();
-
             }
             catch (Exception ex)
             {

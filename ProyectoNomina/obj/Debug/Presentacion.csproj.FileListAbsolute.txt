@@ -7,3 +7,11 @@ C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\obj\Debug\Presentacion
 C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\obj\Debug\Presentacion.csproj.CoreCompileInputs.cache
 C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\obj\Debug\ProyectoNomina.exe
 C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\obj\Debug\ProyectoNomina.pdb
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\bin\Debug\Dominio.dll
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\bin\Debug\Servicios.dll
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\bin\Debug\AccesoDatos.dll
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\bin\Debug\Dominio.pdb
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\bin\Debug\Servicios.pdb
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\bin\Debug\AccesoDatos.pdb
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\obj\Debug\ProyectoNomina.FrmEmpleados.resources
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\obj\Debug\Presentacion.csproj.CopyComplete

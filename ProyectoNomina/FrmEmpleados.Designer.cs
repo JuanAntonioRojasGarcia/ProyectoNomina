@@ -79,6 +79,7 @@
             this.txtNumeroEmpleado.Size = new System.Drawing.Size(139, 22);
             this.txtNumeroEmpleado.TabIndex = 0;
             this.txtNumeroEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroEmpleado_KeyPress);
+            this.txtNumeroEmpleado.Validating += new System.ComponentModel.CancelEventHandler(this.txtNumeroEmpleado_Validating);
             // 
             // label5
             // 

@@ -1,0 +1,11 @@
+C:\Users\skili\source\repos\ProyectoNomina\Dominio\bin\Debug\Dominio.dll
+C:\Users\skili\source\repos\ProyectoNomina\Dominio\bin\Debug\Dominio.pdb
+C:\Users\skili\source\repos\ProyectoNomina\Dominio\bin\Debug\AccesoDatos.dll
+C:\Users\skili\source\repos\ProyectoNomina\Dominio\bin\Debug\Servicios.dll
+C:\Users\skili\source\repos\ProyectoNomina\Dominio\bin\Debug\AccesoDatos.pdb
+C:\Users\skili\source\repos\ProyectoNomina\Dominio\bin\Debug\Servicios.pdb
+C:\Users\skili\source\repos\ProyectoNomina\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\skili\source\repos\ProyectoNomina\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\skili\source\repos\ProyectoNomina\Dominio\obj\Debug\Dominio.csproj.CopyComplete
+C:\Users\skili\source\repos\ProyectoNomina\Dominio\obj\Debug\Dominio.dll
+C:\Users\skili\source\repos\ProyectoNomina\Dominio\obj\Debug\Dominio.pdb

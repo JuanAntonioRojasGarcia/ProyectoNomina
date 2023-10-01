@@ -1,0 +1,6 @@
+C:\Users\skili\source\repos\ProyectoNomina\Servicios\bin\Debug\Servicios.dll
+C:\Users\skili\source\repos\ProyectoNomina\Servicios\bin\Debug\Servicios.pdb
+C:\Users\skili\source\repos\ProyectoNomina\Servicios\obj\Debug\Servicios.csproj.AssemblyReference.cache
+C:\Users\skili\source\repos\ProyectoNomina\Servicios\obj\Debug\Servicios.csproj.CoreCompileInputs.cache
+C:\Users\skili\source\repos\ProyectoNomina\Servicios\obj\Debug\Servicios.dll
+C:\Users\skili\source\repos\ProyectoNomina\Servicios\obj\Debug\Servicios.pdb

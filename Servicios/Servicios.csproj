@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\ConfiguracionImpuestosEmpleadoDTO.cs" />
+    <Compile Include="DTO\ConfiguracionSueldosEmpleadoDTO.cs" />
     <Compile Include="DTO\EmpleadoDTO.cs" />
+    <Compile Include="DTO\ImpuestoDTO.cs" />
+    <Compile Include="DTO\RolDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

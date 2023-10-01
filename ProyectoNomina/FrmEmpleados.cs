@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dominio.CRUD;
+using Servicios.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,21 @@ namespace ProyectoNomina
 {
     public partial class FrmEmpleados : Form
     {
+        EmpleadoDOM empleadoDOM;
+        EmpleadoDTO empleadoDTO;
+        ConfiguracionSueldosEmpleadoDTO configuracionSueldosDTO;
+        List<ConfiguracionImpuestosEmpleadoDTO> listaConfiguracionImpuestosDTO;
+        bool esActualizacion;
+
         public FrmEmpleados()
         {
             InitializeComponent();
+
+            empleadoDOM = new EmpleadoDOM();
+            empleadoDTO = new EmpleadoDTO();
+            configuracionSueldosDTO = new ConfiguracionSueldosEmpleadoDTO();
+            listaConfiguracionImpuestosDTO = new List<ConfiguracionImpuestosEmpleadoDTO>();
+            esActualizacion = false;
         }
 
         private void Nuevo()
@@ -22,12 +36,19 @@ namespace ProyectoNomina
             try
             {
                 LimpiarErrorProvider();
+                this.empleadoDTO = new EmpleadoDTO();
+                this.configuracionSueldosDTO = new ConfiguracionSueldosEmpleadoDTO();
+                listaConfiguracionImpuestosDTO.Clear();
+
+                txtNumeroEmpleado.Text = string.Empty;
+                txtNumeroEmpleado.Enabled = true;
                 txtNombre.Text = string.Empty;
                 txtApellidoPaterno.Text = string.Empty;
                 txtApellidoMaterno.Text = string.Empty;
                 rbChofer.Checked = false;
                 rbCargador.Checked = false;
                 rbAuxiliar.Checked = false;
+                esActualizacion = false;
             }
             catch (Exception ex)
             {
@@ -72,7 +93,7 @@ namespace ProyectoNomina
                 if (!(rbChofer.Checked || rbCargador.Checked || rbAuxiliar.Checked))
                 {
                     resultado = false;
-                    epError.SetError(groupBox2, "Capture un Rol para el Empleado por favor...");
+                    epError.SetError(groupBox2, "Seleccione un Rol para el Empleado por favor...");
                 }
 
                 return resultado;
@@ -157,19 +178,59 @@ namespace ProyectoNomina
             {
                 if (ValidarInformacion())
                 {
-                    //Guardar o Actualizar informacion
-                    this.Cursor = Cursors.WaitCursor;
-                    
-                    /*empleadoDTO.NumeroEmpleado = int.Parse(txtNumeroEmpleado.Text.Trim());
-                    empleadoDTO.Nombre = txtNombre.Text.Trim();
-                    empleadoDTO.ApellidoPaterno = txtApellidoPaterno.Text.Trim();
-                    empleadoDTO.ApellidoMaterno = txtApellidoMaterno.Text.Trim();
-                    empleadoDTO.CodigoRol = ObtenerCodigoRol();
-                    empleadoDTO.LimiteSueldoMensual = 10000m;
-                    empleado.GuardarEmpleado(empleadoDTO);*/
+                    if (!esActualizacion)
+                    {
+                        //Guardar registro de Empleado
+                        this.Cursor = Cursors.WaitCursor;
 
-                    Nuevo();
-                    this.Cursor = Cursors.Default;
+                        empleadoDTO.NumeroEmpleado = int.Parse(txtNumeroEmpleado.Text.Trim());
+                        empleadoDTO.Nombre = txtNombre.Text.Trim();
+                        empleadoDTO.ApellidoPaterno = txtApellidoPaterno.Text.Trim();
+                        empleadoDTO.ApellidoMaterno = txtApellidoMaterno.Text.Trim();
+                        empleadoDTO.CodigoRol = ObtenerCodigoRol();
+
+                        configuracionSueldosDTO.NumeroEmpleado = int.Parse(txtNumeroEmpleado.Text.Trim());
+                        configuracionSueldosDTO.SueldoBasePorHora = 30.00m;
+                        configuracionSueldosDTO.PagoPorEntrega = 5.00m;
+                        configuracionSueldosDTO.PorcentajeVales = 4.00m;
+                        configuracionSueldosDTO.LimiteSueldoMensual = 10000.00m;
+
+
+                        ConfiguracionImpuestosEmpleadoDTO configuracionImpuestoDTO = new ConfiguracionImpuestosEmpleadoDTO();
+                        configuracionImpuestoDTO.NumeroEmpleado = int.Parse(txtNumeroEmpleado.Text.Trim());
+                        configuracionImpuestoDTO.CodigoImpuesto = 1;
+                        listaConfiguracionImpuestosDTO.Add(configuracionImpuestoDTO);
+
+                        configuracionImpuestoDTO = new ConfiguracionImpuestosEmpleadoDTO();
+                        configuracionImpuestoDTO.NumeroEmpleado = int.Parse(txtNumeroEmpleado.Text.Trim());
+                        configuracionImpuestoDTO.CodigoImpuesto = 2;
+                        listaConfiguracionImpuestosDTO.Add(configuracionImpuestoDTO);
+
+                        empleadoDOM.GuardarEmpleado(empleadoDTO, configuracionSueldosDTO, listaConfiguracionImpuestosDTO);
+
+                        Nuevo();
+                        this.Cursor = Cursors.Default;
+                        MessageBox.Show("Registro guardado.", "Proyecto Nomina", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtNumeroEmpleado.Focus();
+                    }
+                    else
+                    {
+                        //Actualizar registro de Empleado
+                        this.Cursor = Cursors.WaitCursor;
+
+                        empleadoDTO.NumeroEmpleado = int.Parse(txtNumeroEmpleado.Text.Trim());
+                        empleadoDTO.Nombre = txtNombre.Text.Trim();
+                        empleadoDTO.ApellidoPaterno = txtApellidoPaterno.Text.Trim();
+                        empleadoDTO.ApellidoMaterno = txtApellidoMaterno.Text.Trim();
+                        empleadoDTO.CodigoRol = ObtenerCodigoRol();
+
+                        empleadoDOM.ActualizarEmpleado(empleadoDTO);
+
+                        Nuevo();
+                        this.Cursor = Cursors.Default;
+                        MessageBox.Show("Registro actualizado.", "Proyecto Nomina", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtNumeroEmpleado.Focus();
+                    }
                 }
             }
             catch (Exception)
@@ -177,6 +238,48 @@ namespace ProyectoNomina
                 this.Cursor = Cursors.Default;
                 MessageBox.Show("Error al guardar la información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtNumeroEmpleado_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (txtNumeroEmpleado.Text.Trim() == string.Empty)
+                    return;
+
+
+                this.Cursor = Cursors.WaitCursor;
+                EmpleadoDTO empleadoDTO = empleadoDOM.ObtenerEmpleado(int.Parse(txtNumeroEmpleado.Text.Trim()));
+                ConfiguracionSueldosEmpleadoDTO configuracionSueldosDTO = empleadoDOM.ObtenerConfiguracionSueldos(int.Parse(txtNumeroEmpleado.Text.Trim()));
+                List<ConfiguracionImpuestosEmpleadoDTO> listaConfiguracionImpuestosDTO = empleadoDOM.ObtenerConfiguracionImpuestos(int.Parse(txtNumeroEmpleado.Text.Trim()));
+
+                if (empleadoDTO != null)
+                {
+                    txtNumeroEmpleado.Text = empleadoDTO.NumeroEmpleado.ToString();
+                    txtNombre.Text = empleadoDTO.Nombre;
+                    txtApellidoPaterno.Text = empleadoDTO.ApellidoPaterno;
+                    txtApellidoMaterno.Text = empleadoDTO.ApellidoMaterno;
+                    EstablecerRol(empleadoDTO.CodigoRol);
+                    esActualizacion = true;
+                    txtNumeroEmpleado.Enabled = false;
+                    this.empleadoDTO = empleadoDTO;
+                    this.configuracionSueldosDTO = configuracionSueldosDTO;
+                    this.listaConfiguracionImpuestosDTO = listaConfiguracionImpuestosDTO;
+                }
+                else
+                {
+                    esActualizacion = false;
+                    //MessageBox.Show("No se encontró el registro", "Proyecto Nomina", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                this.Cursor = Cursors.Default;
+
+            }
+            catch (Exception)
+            {
+                this.Cursor = Cursors.Default;
+                MessageBox.Show("Error al obtener el registro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

@@ -30,7 +30,7 @@ namespace AccesoDatos.Conexion
         {
             try
             {
-                _connectionSql = new SqlConnection("Data Source=./SQLEXPRESS; Initial Catalog=ProyectoDB; Trusted_Connection=Yes");
+                _connectionSql = new SqlConnection("Data Source=.\\SQLEXPRESS; Initial Catalog=ProyectoDB; Trusted_Connection=Yes");
                 _parameterList = new List<SqlParameter>();
             }
             catch (Exception ex)

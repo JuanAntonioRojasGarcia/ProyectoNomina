@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion\ConnectionDB.cs" />
+    <Compile Include="DAO\ConfiguracionImpuestosEmpleadoDAO.cs" />
+    <Compile Include="DAO\ConfiguracionSueldosEmpleadoDAO.cs" />
     <Compile Include="DAO\EmpleadoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
