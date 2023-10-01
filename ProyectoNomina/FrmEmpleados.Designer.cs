@@ -1,6 +1,6 @@
 ﻿namespace ProyectoNomina
 {
-    partial class Form1
+    partial class FrmEmpleados
     {
         /// <summary>
         /// Variable del diseñador necesaria.

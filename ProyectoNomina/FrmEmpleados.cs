@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProyectoNomina
 {
-    public partial class Form1 : Form
+    public partial class FrmEmpleados : Form
     {
-        public Form1()
+        public FrmEmpleados()
         {
             InitializeComponent();
         }
