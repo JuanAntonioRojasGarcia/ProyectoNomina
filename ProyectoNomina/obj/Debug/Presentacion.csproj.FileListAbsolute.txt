@@ -1,0 +1,9 @@
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\bin\Debug\ProyectoNomina.exe.config
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\bin\Debug\ProyectoNomina.exe
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\bin\Debug\ProyectoNomina.pdb
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\obj\Debug\Presentacion.csproj.AssemblyReference.cache
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\obj\Debug\ProyectoNomina.Properties.Resources.resources
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\obj\Debug\Presentacion.csproj.GenerateResource.cache
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\obj\Debug\Presentacion.csproj.CoreCompileInputs.cache
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\obj\Debug\ProyectoNomina.exe
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\obj\Debug\ProyectoNomina.pdb
