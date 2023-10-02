@@ -13,7 +13,7 @@ namespace Servicios.DTO
         public int Mes { get; set; }
         public int HorasTrabajadas { get; set; }
         public int CantidadEntregas { get; set; }
-        public decimal SalarioBase { get; set; }
+        public decimal SueldoBase { get; set; }
         public decimal ImportePagoPorEntregas { get; set; }
         public decimal ImportePagoPorBono { get; set; }
         public decimal ImporteVales { get; set; }

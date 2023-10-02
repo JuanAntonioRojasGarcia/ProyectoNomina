@@ -10,5 +10,6 @@ namespace Servicios.DTO
     {
         public int NumeroEmpleado { get; set; }
         public int CodigoImpuesto { get; set; }
+        public decimal Porcentaje { get; set;}
     }
 }

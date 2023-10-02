@@ -49,7 +49,10 @@ namespace ProyectoNomina
                 LimpiarErrorProvider();
                 this.empleadoDTO = new EmpleadoDTO();
                 this.configuracionSueldosDTO = new ConfiguracionSueldosEmpleadoDTO();
+
                 listaConfiguracionImpuestosDTO.Clear();
+                rolDTO = new RolDTO();
+                movimientoDTO = new MovimientoMensualDTO();
 
                 txtNumeroEmpleado.Text = string.Empty;
                 txtNumeroEmpleado.Enabled = true;
@@ -116,7 +119,7 @@ namespace ProyectoNomina
                 if (txtHorasTrabajadas.Text == string.Empty)
                 {
                     resultado = false;
-                    epError.SetError(txtHorasTrabajadas, "Capture la horas trabajas en el Mes por favor...");
+                    epError.SetError(txtHorasTrabajadas, "Capture la horas trabajadas en el Mes por favor...");
                 }
 
                 if (txtCantidadEntregas.Text == string.Empty)
@@ -144,6 +147,7 @@ namespace ProyectoNomina
             }
         }
 
+
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             try
@@ -158,7 +162,74 @@ namespace ProyectoNomina
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (ValidarInformacion())
+                {
+                    if (!esActualizacion)
+                    {
+                        //Guardar registro del movimiento de sueldo mensual
+                        this.Cursor = Cursors.WaitCursor;
 
+                        movimientoDTO.NumeroEmpleado = int.Parse(txtNumeroEmpleado.Text.Trim());
+                        movimientoDTO.CodigoRol = rolDTO.CodigoRol;
+                        movimientoDTO.Mes = int.Parse(cboMes.SelectedValue.ToString());
+                        movimientoDTO.SueldoBase = movimientoDOM.CalcularSueldoBaseMensual(int.Parse(txtHorasTrabajadas.Text.Trim()), configuracionSueldosDTO.SueldoBasePorHora);
+                        movimientoDTO.ImportePagoPorEntregas = movimientoDOM.CalcularPagoPorEntregas(int.Parse(txtCantidadEntregas.Text.Trim()), configuracionSueldosDTO.PagoPorEntrega);
+                        movimientoDTO.ImportePagoPorBono = movimientoDOM.CalcularPagoPorBonos(int.Parse(txtHorasTrabajadas.Text.Trim()), rolDTO.BonoPorHora);
+                        movimientoDTO.ImporteVales = movimientoDOM.CalcularImporteVales(0, configuracionSueldosDTO.PorcentajeVales);
+
+                        decimal sueldoSubtotal = movimientoDOM.ObtenerSubTotalSueldo(int.Parse(txtHorasTrabajadas.Text.Trim()),
+                                                               int.Parse(txtCantidadEntregas.Text.Trim()),
+                                                               configuracionSueldosDTO, rolDTO);
+
+                        
+                        movimientoDTO.ISR = movimientoDOM.CalcularISR(sueldoSubtotal, listaConfiguracionImpuestosDTO[0].Porcentaje);
+                        movimientoDTO.ISRAdicional = 0;
+
+                        if (sueldoSubtotal > configuracionSueldosDTO.LimiteSueldoMensual)
+                        {
+                            //Agregar ISR Adicional
+                            sueldoSubtotal -= movimientoDTO.ISR;
+                            movimientoDTO.ISRAdicional = movimientoDOM.CalcularISRAdicional(sueldoSubtotal, listaConfiguracionImpuestosDTO[1].Porcentaje);
+                        }
+                     
+                        movimientoDOM.GuardarMovimientoMensual(movimientoDTO);
+
+                        Nuevo();
+                        this.Cursor = Cursors.Default;
+                        MessageBox.Show("Registro guardado.", "Proyecto Nomina", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtNumeroEmpleado.Focus();
+                    }
+                    else
+                    {
+                        //Actualizar registro de Empleado
+                        this.Cursor = Cursors.WaitCursor;
+
+                        empleadoDTO.NumeroEmpleado = int.Parse(txtNumeroEmpleado.Text.Trim());
+                        movimientoDTO.CodigoRol = rolDTO.CodigoRol;
+                        movimientoDTO.Mes = int.Parse(cboMes.SelectedValue.ToString());
+                        movimientoDTO.SueldoBase = 0;
+                        movimientoDTO.ImportePagoPorEntregas = 0;
+                        movimientoDTO.ImportePagoPorBono = 0;
+                        movimientoDTO.ImporteVales = 0;
+                        movimientoDTO.ISR = 0;
+                        movimientoDTO.ISRAdicional = 0;
+
+                        movimientoDOM.ActualizarMovimientoMensual(movimientoDTO);
+
+                        Nuevo();
+                        this.Cursor = Cursors.Default;
+                        MessageBox.Show("Registro actualizado.", "Proyecto Nomina", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtNumeroEmpleado.Focus();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                this.Cursor = Cursors.Default;
+                MessageBox.Show("Error al guardar la información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void txtNumeroEmpleado_Validating(object sender, CancelEventArgs e)
@@ -196,7 +267,7 @@ namespace ProyectoNomina
                     this.empleadoDTO = empleadoDTO;
                     this.configuracionSueldosDTO = configuracionSueldosDTO;
                     this.listaConfiguracionImpuestosDTO = listaConfiguracionImpuestosDTO;
-                    this.rolDTO = rolDTO;   
+                    this.rolDTO = rolDTO;
                 }
                 else
                 {
@@ -220,6 +291,7 @@ namespace ProyectoNomina
                 if (txtNumeroEmpleado.Text.Trim() == string.Empty || lblNombre.Text.Trim() == string.Empty)
                 {
                     MessageBox.Show("Capture un numero de empleado válido", "Proyecto Nomina", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtNumeroEmpleado.Focus();
                     return;
                 }
                 if (cboMes.SelectedValue == null)

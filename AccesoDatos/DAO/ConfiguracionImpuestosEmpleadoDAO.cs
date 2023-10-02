@@ -36,6 +36,7 @@ namespace AccesoDatos.DAO
                     configuracionDTO = new ConfiguracionImpuestosEmpleadoDTO();
                     configuracionDTO.NumeroEmpleado = (int)dr.ItemArray[0];
                     configuracionDTO.CodigoImpuesto = (int)dr.ItemArray[1];
+                    configuracionDTO.Porcentaje = (decimal)dr.ItemArray[2]; 
                     listaConfiguracion.Add(configuracionDTO);
                 }
 

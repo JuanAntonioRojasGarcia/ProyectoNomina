@@ -39,7 +39,7 @@ namespace AccesoDatos.DAO
                     movimientoDTO.Mes = (int)dt.Rows[0].ItemArray[2];
                     movimientoDTO.HorasTrabajadas = (int)dt.Rows[0].ItemArray[3];
                     movimientoDTO.CantidadEntregas = (int)dt.Rows[0].ItemArray[4];
-                    movimientoDTO.SalarioBase = (decimal)dt.Rows[0].ItemArray[5];
+                    movimientoDTO.SueldoBase = (decimal)dt.Rows[0].ItemArray[5];
                     movimientoDTO.ImportePagoPorEntregas = (decimal)dt.Rows[0].ItemArray[6];
                     movimientoDTO.ImportePagoPorBono = (decimal)dt.Rows[0].ItemArray[7];
                     movimientoDTO.ImporteVales = (decimal)dt.Rows[0].ItemArray[8];
@@ -71,7 +71,7 @@ namespace AccesoDatos.DAO
                 db.AddParameter("@Mes", SqlDbType.Int, movimientoDTO.Mes);
                 db.AddParameter("@HorasTrabajadas", SqlDbType.Int, movimientoDTO.HorasTrabajadas);
                 db.AddParameter("@CantidadEntregas", SqlDbType.Int, movimientoDTO.CantidadEntregas);
-                db.AddParameter("@SalarioBase", SqlDbType.Money, movimientoDTO.SalarioBase);
+                db.AddParameter("@SueldoBase", SqlDbType.Money, movimientoDTO.SueldoBase);
                 db.AddParameter("@ImportePagoPorEntregas", SqlDbType.Money, movimientoDTO.ImportePagoPorEntregas);
                 db.AddParameter("@ImportePagoPorBono", SqlDbType.Money, movimientoDTO.ImportePagoPorBono);
                 db.AddParameter("@ImporteVales", SqlDbType.Money, movimientoDTO.ImporteVales);
@@ -102,7 +102,7 @@ namespace AccesoDatos.DAO
                 db.AddParameter("@Mes", SqlDbType.Int, movimientoDTO.Mes);
                 db.AddParameter("@HorasTrabajadas", SqlDbType.Int, movimientoDTO.HorasTrabajadas);
                 db.AddParameter("@CantidadEntregas", SqlDbType.Int, movimientoDTO.CantidadEntregas);
-                db.AddParameter("@SalarioBase", SqlDbType.Money, movimientoDTO.SalarioBase);
+                db.AddParameter("@SueldoBase", SqlDbType.Money, movimientoDTO.SueldoBase);
                 db.AddParameter("@ImportePagoPorEntregas", SqlDbType.Money, movimientoDTO.ImportePagoPorEntregas);
                 db.AddParameter("@ImportePagoPorBono", SqlDbType.Money, movimientoDTO.ImportePagoPorBono);
                 db.AddParameter("@ImporteVales", SqlDbType.Money, movimientoDTO.ImporteVales);

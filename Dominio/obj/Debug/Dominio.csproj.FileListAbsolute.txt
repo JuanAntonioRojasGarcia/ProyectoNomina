@@ -9,3 +9,14 @@ C:\Users\skili\source\repos\ProyectoNomina\Dominio\obj\Debug\Dominio.csproj.Core
 C:\Users\skili\source\repos\ProyectoNomina\Dominio\obj\Debug\Dominio.csproj.CopyComplete
 C:\Users\skili\source\repos\ProyectoNomina\Dominio\obj\Debug\Dominio.dll
 C:\Users\skili\source\repos\ProyectoNomina\Dominio\obj\Debug\Dominio.pdb
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Dominio\bin\Debug\Dominio.dll
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Dominio\bin\Debug\Dominio.pdb
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Dominio\bin\Debug\AccesoDatos.dll
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Dominio\bin\Debug\Servicios.dll
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Dominio\bin\Debug\AccesoDatos.pdb
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Dominio\bin\Debug\Servicios.pdb
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Dominio\obj\Debug\Dominio.csproj.CopyComplete
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Dominio\obj\Debug\Dominio.dll
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Dominio\obj\Debug\Dominio.pdb
