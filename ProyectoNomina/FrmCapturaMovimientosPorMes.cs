@@ -174,16 +174,17 @@ namespace ProyectoNomina
                         movimientoDTO.NumeroEmpleado = int.Parse(txtNumeroEmpleado.Text.Trim());
                         movimientoDTO.CodigoRol = rolDTO.CodigoRol;
                         movimientoDTO.Mes = int.Parse(cboMes.SelectedValue.ToString());
+                        movimientoDTO.HorasTrabajadas = int.Parse(txtHorasTrabajadas.Text.Trim());
+                        movimientoDTO.CantidadEntregas = int.Parse(txtCantidadEntregas.Text.Trim());
                         movimientoDTO.SueldoBase = movimientoDOM.CalcularSueldoBaseMensual(int.Parse(txtHorasTrabajadas.Text.Trim()), configuracionSueldosDTO.SueldoBasePorHora);
                         movimientoDTO.ImportePagoPorEntregas = movimientoDOM.CalcularPagoPorEntregas(int.Parse(txtCantidadEntregas.Text.Trim()), configuracionSueldosDTO.PagoPorEntrega);
                         movimientoDTO.ImportePagoPorBono = movimientoDOM.CalcularPagoPorBonos(int.Parse(txtHorasTrabajadas.Text.Trim()), rolDTO.BonoPorHora);
-                        movimientoDTO.ImporteVales = movimientoDOM.CalcularImporteVales(0, configuracionSueldosDTO.PorcentajeVales);
 
                         decimal sueldoSubtotal = movimientoDOM.ObtenerSubTotalSueldo(int.Parse(txtHorasTrabajadas.Text.Trim()),
                                                                int.Parse(txtCantidadEntregas.Text.Trim()),
                                                                configuracionSueldosDTO, rolDTO);
 
-                        
+
                         movimientoDTO.ISR = movimientoDOM.CalcularISR(sueldoSubtotal, listaConfiguracionImpuestosDTO[0].Porcentaje);
                         movimientoDTO.ISRAdicional = 0;
 
@@ -192,9 +193,16 @@ namespace ProyectoNomina
                             //Agregar ISR Adicional
                             sueldoSubtotal -= movimientoDTO.ISR;
                             movimientoDTO.ISRAdicional = movimientoDOM.CalcularISRAdicional(sueldoSubtotal, listaConfiguracionImpuestosDTO[1].Porcentaje);
+                            sueldoSubtotal -= movimientoDTO.ISRAdicional;
                         }
-                     
-                        movimientoDOM.GuardarMovimientoMensual(movimientoDTO);
+                        else
+                        {
+                            sueldoSubtotal -= movimientoDTO.ISR;
+                        }
+
+                        movimientoDTO.ImporteVales = movimientoDOM.CalcularImporteVales(sueldoSubtotal, configuracionSueldosDTO.PorcentajeVales);
+
+                        movimientoDOM.GuardarMovimientoSueldo(movimientoDTO);
 
                         Nuevo();
                         this.Cursor = Cursors.Default;
@@ -209,14 +217,36 @@ namespace ProyectoNomina
                         empleadoDTO.NumeroEmpleado = int.Parse(txtNumeroEmpleado.Text.Trim());
                         movimientoDTO.CodigoRol = rolDTO.CodigoRol;
                         movimientoDTO.Mes = int.Parse(cboMes.SelectedValue.ToString());
-                        movimientoDTO.SueldoBase = 0;
-                        movimientoDTO.ImportePagoPorEntregas = 0;
-                        movimientoDTO.ImportePagoPorBono = 0;
-                        movimientoDTO.ImporteVales = 0;
-                        movimientoDTO.ISR = 0;
+                        movimientoDTO.HorasTrabajadas = int.Parse(txtHorasTrabajadas.Text.Trim());
+                        movimientoDTO.CantidadEntregas = int.Parse(txtCantidadEntregas.Text.Trim());
+                        movimientoDTO.SueldoBase = movimientoDOM.CalcularSueldoBaseMensual(int.Parse(txtHorasTrabajadas.Text.Trim()), configuracionSueldosDTO.SueldoBasePorHora);
+                        movimientoDTO.ImportePagoPorEntregas = movimientoDOM.CalcularPagoPorEntregas(int.Parse(txtCantidadEntregas.Text.Trim()), configuracionSueldosDTO.PagoPorEntrega);
+                        movimientoDTO.ImportePagoPorBono = movimientoDOM.CalcularPagoPorBonos(int.Parse(txtHorasTrabajadas.Text.Trim()), rolDTO.BonoPorHora);
+
+                        decimal sueldoSubtotal = movimientoDOM.ObtenerSubTotalSueldo(int.Parse(txtHorasTrabajadas.Text.Trim()),
+                                                               int.Parse(txtCantidadEntregas.Text.Trim()),
+                                                               configuracionSueldosDTO, rolDTO);
+
+
+                        movimientoDTO.ISR = movimientoDOM.CalcularISR(sueldoSubtotal, listaConfiguracionImpuestosDTO[0].Porcentaje);
                         movimientoDTO.ISRAdicional = 0;
 
-                        movimientoDOM.ActualizarMovimientoMensual(movimientoDTO);
+                        if (sueldoSubtotal > configuracionSueldosDTO.LimiteSueldoMensual)
+                        {
+                            //Agregar ISR Adicional
+                            sueldoSubtotal -= movimientoDTO.ISR;
+                            movimientoDTO.ISRAdicional = movimientoDOM.CalcularISRAdicional(sueldoSubtotal, listaConfiguracionImpuestosDTO[1].Porcentaje);
+                            sueldoSubtotal -= movimientoDTO.ISRAdicional;
+                        }
+                        else
+                        {
+                            sueldoSubtotal -= movimientoDTO.ISR;
+                        }
+
+                        movimientoDTO.ImporteVales = movimientoDOM.CalcularImporteVales(sueldoSubtotal, configuracionSueldosDTO.PorcentajeVales);
+
+
+                        movimientoDOM.ActualizarMovimientoSueldo(movimientoDTO);
 
                         Nuevo();
                         this.Cursor = Cursors.Default;
@@ -302,7 +332,7 @@ namespace ProyectoNomina
                 }
 
                 this.Cursor = Cursors.WaitCursor;
-                MovimientoMensualDTO movimientoDTO = movimientoDOM.ObtenerMovimientoMensual(int.Parse(txtNumeroEmpleado.Text.Trim()),
+                MovimientoMensualDTO movimientoDTO = movimientoDOM.ObtenerMovimientoSueldo(int.Parse(txtNumeroEmpleado.Text.Trim()),
                                                             empleadoDTO.CodigoRol, int.Parse(cboMes.SelectedValue.ToString()));
 
                 if (movimientoDTO != null)

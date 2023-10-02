@@ -25,19 +25,19 @@ namespace Dominio.CRUD
             movimientoMensualDAO = new MovimientoMensualDAO();
         }
 
-        public MovimientoMensualDTO ObtenerMovimientoMensual(int numeroEmpleado, int codigoRol, int mes)
+        public MovimientoMensualDTO ObtenerMovimientoSueldo(int numeroEmpleado, int codigoRol, int mes)
         {
-            return movimientoMensualDAO.ObtenerMovimientoMensual(numeroEmpleado, codigoRol, mes);
+            return movimientoMensualDAO.ObtenerMovimientoSueldo(numeroEmpleado, codigoRol, mes);
         }
 
-        public void GuardarMovimientoMensual(MovimientoMensualDTO movimientoDTO)
+        public void GuardarMovimientoSueldo(MovimientoMensualDTO movimientoDTO)
         {
-            movimientoMensualDAO.GuardarMovimientoMensual(movimientoDTO);
+            movimientoMensualDAO.GuardarMovimientoSueldo(movimientoDTO);
         }
 
-        public void ActualizarMovimientoMensual(MovimientoMensualDTO movimientoDTO)
+        public void ActualizarMovimientoSueldo(MovimientoMensualDTO movimientoDTO)
         {
-            movimientoMensualDAO.ActualizarMovimientoMensual(movimientoDTO);
+            movimientoMensualDAO.ActualizarMovimientoSueldo(movimientoDTO);
         }
 
         public RolDTO ObtenerRol(int codigoRol)
@@ -57,30 +57,30 @@ namespace Dominio.CRUD
 
         public decimal CalcularSueldoBaseMensual(int horasTrabajadas, decimal sueldoBasePorHora)
         {
-            return Convert.ToDecimal(horasTrabajadas * sueldoBasePorHora);
+            return Math.Round(Convert.ToDecimal(horasTrabajadas * sueldoBasePorHora), 2);
         }
         public decimal CalcularPagoPorEntregas(int cantidadEntregas, decimal pagoPorEntrega)
         {
-            return Convert.ToDecimal(cantidadEntregas * pagoPorEntrega);
+            return Math.Round(Convert.ToDecimal(cantidadEntregas * pagoPorEntrega),2);
         }
 
         public decimal CalcularPagoPorBonos(int horasTrabajadas, decimal bonoPorHora)
         {
-            return Convert.ToDecimal(horasTrabajadas * bonoPorHora);
+            return Math.Round(Convert.ToDecimal(horasTrabajadas * bonoPorHora),2);
         }
 
         public decimal CalcularImporteVales(decimal sueldo, decimal porcentajeVales)
         {
-            return Convert.ToDecimal(sueldo * (porcentajeVales / 100));
+            return Math.Round(Convert.ToDecimal(sueldo * (porcentajeVales / 100)),2);
         }
 
         public decimal CalcularISR(decimal sueldo, decimal porcentajeISR)
         {
-            return Convert.ToDecimal(sueldo * (porcentajeISR / 100));
+            return Math.Round(Convert.ToDecimal(sueldo * (porcentajeISR / 100)),2);
         }
         public decimal CalcularISRAdicional(decimal sueldo, decimal porcentajeISRAdicional)
         {
-            return Convert.ToDecimal(sueldo * (porcentajeISRAdicional / 100));
+            return Math.Round(Convert.ToDecimal(sueldo * (porcentajeISRAdicional / 100)),2);
         }
     }
 }

@@ -17,13 +17,13 @@ namespace AccesoDatos.DAO
         {
             db = new ConnectionDB();
         }
-        public MovimientoMensualDTO ObtenerMovimientoMensual(int numeroEmpleado, int codigoRol, int mes)
+        public MovimientoMensualDTO ObtenerMovimientoSueldo(int numeroEmpleado, int codigoRol, int mes)
         {
             try
             {
                 MovimientoMensualDTO movimientoDTO = null;
                 DataTable dt = new DataTable();
-                db.StoredProcedureName = "SP_ObtenerMovimientoSueldoMensual";
+                db.StoredProcedureName = "SP_ObtenerMovimientosSueldos";
                 db.CleanParameters();
                 db.AddParameter("@NumeroEmpleado", System.Data.SqlDbType.Int, numeroEmpleado);
                 db.AddParameter("@CodigoRol", System.Data.SqlDbType.Int, codigoRol);
@@ -60,11 +60,11 @@ namespace AccesoDatos.DAO
             }
         }
 
-        public void GuardarMovimientoMensual(MovimientoMensualDTO movimientoDTO)
+        public void GuardarMovimientoSueldo(MovimientoMensualDTO movimientoDTO)
         {
             try
             {
-                db.StoredProcedureName = "SP_GuardarMovimientoSueldoMensual";
+                db.StoredProcedureName = "SP_GuardarMovimientosSueldos";
                 db.CleanParameters();
                 db.AddParameter("@NumeroEmpleado", SqlDbType.Int, movimientoDTO.NumeroEmpleado);
                 db.AddParameter("@CodigoRol", SqlDbType.Int, movimientoDTO.CodigoRol);
@@ -91,11 +91,11 @@ namespace AccesoDatos.DAO
             }
         }
 
-        public void ActualizarMovimientoMensual(MovimientoMensualDTO movimientoDTO)
+        public void ActualizarMovimientoSueldo(MovimientoMensualDTO movimientoDTO)
         {
             try
             {
-                db.StoredProcedureName = "SP_ActualizarMovimientoSueldoMensual";
+                db.StoredProcedureName = "SP_ActualizarMovimientosSueldos";
                 db.CleanParameters();
                 db.AddParameter("@NumeroEmpleado", SqlDbType.Int, movimientoDTO.NumeroEmpleado);
                 db.AddParameter("@CodigoRol", SqlDbType.Int, movimientoDTO.CodigoRol);
