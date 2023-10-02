@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CRUD\EmpleadoDOM.cs" />
+    <Compile Include="CRUD\MovimientoMensualDOM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

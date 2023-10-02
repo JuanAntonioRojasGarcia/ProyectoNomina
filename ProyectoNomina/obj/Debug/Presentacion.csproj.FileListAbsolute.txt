@@ -15,3 +15,4 @@ C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\bin\Debug\Servicios.pd
 C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\bin\Debug\AccesoDatos.pdb
 C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\obj\Debug\ProyectoNomina.FrmEmpleados.resources
 C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\obj\Debug\Presentacion.csproj.CopyComplete
+C:\Users\skili\source\repos\ProyectoNomina\ProyectoNomina\obj\Debug\ProyectoNomina.FrmCapturaMovimientosPorMes.resources

@@ -45,6 +45,7 @@
     <Compile Include="DTO\ConfiguracionSueldosEmpleadoDTO.cs" />
     <Compile Include="DTO\EmpleadoDTO.cs" />
     <Compile Include="DTO\ImpuestoDTO.cs" />
+    <Compile Include="DTO\MovimientoMensualDTO.cs" />
     <Compile Include="DTO\RolDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -45,6 +45,8 @@
     <Compile Include="DAO\ConfiguracionImpuestosEmpleadoDAO.cs" />
     <Compile Include="DAO\ConfiguracionSueldosEmpleadoDAO.cs" />
     <Compile Include="DAO\EmpleadoDAO.cs" />
+    <Compile Include="DAO\MovimientoMensualDAO.cs" />
+    <Compile Include="DAO\RolDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
