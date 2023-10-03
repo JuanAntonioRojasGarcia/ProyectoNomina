@@ -16,9 +16,7 @@ namespace ProyectoNomina
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FrmEmpleados());
-            Application.Run(new FrmCapturaMovimientosPorMes());
-
+            Application.Run(new frmMDI());
         }
     }
 }
