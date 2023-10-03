@@ -301,8 +301,10 @@ namespace ProyectoNomina
                 }
                 else
                 {
-                    esActualizacion = false;
-                    //MessageBox.Show("No se encontró el registro", "Proyecto Nomina", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //esActualizacion = false;
+                    this.Cursor = Cursors.Default;
+                    MessageBox.Show("No se encontró el registro para numero de empleado capturado.", "Proyecto Nomina", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtNumeroEmpleado.Focus();
                 }
                 this.Cursor = Cursors.Default;
 
@@ -404,7 +406,7 @@ namespace ProyectoNomina
                     MessageBox.Show("No hay detalle para mostrar", "Proyecto Nomina", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                FrmSueldoDetalles frmSueldoDetalles = new FrmSueldoDetalles(this.empleadoDTO, this.movimientoDTO);
+                FrmSueldoDetalles frmSueldoDetalles = new FrmSueldoDetalles(this.empleadoDTO, this.movimientoDTO, this.rolDTO);
                 frmSueldoDetalles.ShowDialog();
             }
             catch (Exception)

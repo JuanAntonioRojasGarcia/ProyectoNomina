@@ -36,3 +36,5 @@ C:\Users\jrojas\Source\Repos\ProyectoNomina\ProyectoNomina\obj\Debug\ProyectoNom
 C:\Users\jrojas\Source\Repos\ProyectoNomina\ProyectoNomina\obj\Debug\ProyectoNomina.pdb
 C:\Users\jrojas\Source\Repos\ProyectoNomina\ProyectoNomina\obj\Debug\ProyectoNomina.FrmSueldoDetalles.resources
 C:\Users\jrojas\Source\Repos\ProyectoNomina\ProyectoNomina\obj\Debug\ProyectoNomina.frmMDI.resources
+C:\Users\skili\Source\Repos\ProyectoNomina\ProyectoNomina\obj\Debug\ProyectoNomina.frmMDI.resources
+C:\Users\skili\Source\Repos\ProyectoNomina\ProyectoNomina\obj\Debug\ProyectoNomina.FrmSueldoDetalles.resources
