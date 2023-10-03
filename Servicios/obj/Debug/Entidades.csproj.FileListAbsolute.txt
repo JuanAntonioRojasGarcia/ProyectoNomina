@@ -1,0 +1,6 @@
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Servicios\bin\Debug\Servicios.dll
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Servicios\bin\Debug\Servicios.pdb
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Servicios\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Servicios\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Servicios\obj\Debug\Servicios.dll
+C:\Users\jrojas\Source\Repos\ProyectoNomina\Servicios\obj\Debug\Servicios.pdb

@@ -31,7 +31,6 @@ namespace AccesoDatos.Conexion
             try
             {
                 _connectionSql = new SqlConnection("Data Source=.\\SQLEXPRESS; Initial Catalog=ProyectoDB; Trusted_Connection=Yes");
-                //_connectionSql = new SqlConnection("Data Source=185.100.15.212; Initial Catalog=ProyectoDB; User Id=sa;Password=syssql;");
                 _parameterList = new List<SqlParameter>();
             }
             catch (Exception ex)

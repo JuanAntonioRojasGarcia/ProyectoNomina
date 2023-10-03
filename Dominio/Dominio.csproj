@@ -50,9 +50,9 @@
       <Project>{ae9b95fb-27a1-4ee3-873c-78ec1beb6b28}</Project>
       <Name>AccesoDatos</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Servicios\Servicios.csproj">
+    <ProjectReference Include="..\Servicios\Entidades.csproj">
       <Project>{161e5a29-db66-4655-9693-23e65de6483e}</Project>
-      <Name>Servicios</Name>
+      <Name>Entidades</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
