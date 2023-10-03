@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnVerDetalle = new System.Windows.Forms.Button();
             this.txtCantidadEntregas = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtHorasTrabajadas = new System.Windows.Forms.TextBox();
@@ -65,6 +66,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnVerDetalle);
             this.groupBox1.Controls.Add(this.txtCantidadEntregas);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtHorasTrabajadas);
@@ -86,6 +88,16 @@
             this.groupBox1.Size = new System.Drawing.Size(353, 207);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // btnVerDetalle
+            // 
+            this.btnVerDetalle.Location = new System.Drawing.Point(272, 176);
+            this.btnVerDetalle.Name = "btnVerDetalle";
+            this.btnVerDetalle.Size = new System.Drawing.Size(75, 23);
+            this.btnVerDetalle.TabIndex = 3;
+            this.btnVerDetalle.Text = "Ver Detalle";
+            this.btnVerDetalle.UseVisualStyleBackColor = true;
+            this.btnVerDetalle.Click += new System.EventHandler(this.btnVerDetalle_Click);
             // 
             // txtCantidadEntregas
             // 
@@ -137,7 +149,7 @@
             this.cboMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMes.FormattingEnabled = true;
             this.cboMes.Location = new System.Drawing.Point(105, 128);
-            this.cboMes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboMes.Margin = new System.Windows.Forms.Padding(2);
             this.cboMes.Name = "cboMes";
             this.cboMes.Size = new System.Drawing.Size(105, 21);
             this.cboMes.TabIndex = 1;
@@ -265,7 +277,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnNuevo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "FrmCapturaMovimientosPorMes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -299,5 +311,6 @@
         private System.Windows.Forms.TextBox txtHorasTrabajadas;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ErrorProvider epError;
+        private System.Windows.Forms.Button btnVerDetalle;
     }
 }

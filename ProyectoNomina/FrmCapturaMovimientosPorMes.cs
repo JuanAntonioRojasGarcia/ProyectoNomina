@@ -394,6 +394,25 @@ namespace ProyectoNomina
                 MessageBox.Show("Error al presionar la tecla", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnVerDetalle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!esActualizacion)
+                {
+                    MessageBox.Show("No hay detalle para mostrar", "Proyecto Nomina", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                FrmSueldoDetalles frmSueldoDetalles = new FrmSueldoDetalles(this.empleadoDTO, this.movimientoDTO);
+                frmSueldoDetalles.ShowDialog();
+            }
+            catch (Exception)
+            {
+                this.Cursor = Cursors.Default;
+                MessageBox.Show("Error al mostrar el detalle", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 
     public class Mes
